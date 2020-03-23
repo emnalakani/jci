@@ -1,8 +1,40 @@
 easy_admin:
-   site_name: '<img src="jci.png" width="100px" height="60px">'
+   
+   site_name: '<img src="jci.png" width="70px" height="49px">'
+   design:
+      brand_color: '#20b4e4'
+
    entities:
-           #List the entity class name you want to manage
-       - App\Entity\Action
-       - App\Entity\Formation
+    Action:
+      class: App\Entity\Action
+      label: "Action"
+      form:
+        fields:
+            - nom
+            - lieu
+            - jour
+            - mois
+            - annee
+            - heure
+            - {type: 'group', icon: 'clip', label: '' , css_class: 'col-lg-5'}
+            - {property: 'imageFile', type: 'vich_image'}
+      edit:
+        brand_color: '#20b4e4' 
+      
+    Formation:
+      class: App\Entity\Formation
+      label: "Formation"
+      form:
+       fields:
+            - nom
+            - formateur
+            - lieu
+            - jour
+            - mois
+            - annee
+            - {type: 'group', icon: 'clip', label: '' , css_class: 'col-lg-5'}
+            - {property: 'imageFile', type: 'vich_image'}
+       
+      
       
    

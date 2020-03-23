@@ -3,12 +3,15 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
+
 
 /**
  * Formation
  *
  * @ORM\Table(name="formation")
  * @ORM\Entity
+ * @Vich\Uploadable()
  */
 class Formation
 {
@@ -49,6 +52,10 @@ class Formation
      */
     private $image;
 
+    /**
+     * @vich\UploadableField(mapping="Formation", fileNameProperty="image")
+     */
+    private $imageFile ;
     /**
      * @var string
      *
@@ -121,6 +128,16 @@ class Formation
         $this->image = $image;
 
         return $this;
+    }
+    public function getImageFile()
+    {
+        return $this->imageFile;
+    }
+    public function setImageFile($imageFile): void
+    {
+        $this->imageFile = $imageFile;
+
+       
     }
 
     public function getJour(): ?string

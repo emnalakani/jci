@@ -3,12 +3,14 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
  * Action
  *
  * @ORM\Table(name="action")
  * @ORM\Entity
+ * @Vich\Uploadable()
  */
 class Action
 {
@@ -42,11 +44,19 @@ class Action
      */
     private $image;
 
+      /**
+     * @vich\UploadableField(mapping="Action", fileNameProperty="image")
+     */
+    private $imageFile ;
+
     /**
      * @var string
      *
      * @ORM\Column(name="jour", type="string", length=255, nullable=false)
      */
+
+  
+      
     private $jour;
 
     /**
@@ -109,6 +119,16 @@ class Action
         $this->image = $image;
 
         return $this;
+    }
+    public function getImageFile()
+    {
+        return $this->imageFile;
+    }
+    public function setImageFile($imageFile): void
+    {
+        $this->imageFile = $imageFile;
+
+       
     }
 
     public function getJour(): ?string
